@@ -7,7 +7,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
 <meta property="article:published_time" content="2024-09-01T03:32:28.000Z">
-<meta property="article:modified_time" content="2024-09-01T08:01:14.239Z">
+<meta property="article:modified_time" content="2024-09-01T08:09:16.919Z">
 <meta property="article:author" content="Chen zurong">
 <meta property="article:tag" content="Version 1.0">
 <meta name="twitter:card" content="summary">
@@ -56,7 +56,7 @@
   isHome: false,
   isHighlightShrink: false,
   isToc: true,
-  postUpdate: '2024-09-01 16:01:14'
+  postUpdate: '2024-09-01 16:09:16'
 }</script><script>(win=>{
       win.saveToLocal = {
         set: (key, value, ttl) => {
@@ -153,7 +153,7 @@
         }
       }
       detectApple()
-    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">2</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><hr class="custom-hr"/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="Hexo"><span class="site-name">Hexo</span></a></span><div id="menus"><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">移植RTL8188FTV到T113 Tina4.0上的过程以及遇到的问题及解决办法</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2024-09-01T03:32:28.000Z" title="Created 2024-09-01 11:32:28">2024-09-01</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2024-09-01T08:01:14.239Z" title="Updated 2024-09-01 16:01:14">2024-09-01</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="移植RTL8188FTV到T113 Tina4.0上的过程以及遇到的问题及解决办法"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><hr>
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">2</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><hr class="custom-hr"/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="Hexo"><span class="site-name">Hexo</span></a></span><div id="menus"><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">移植RTL8188FTV到T113 Tina4.0上的过程以及遇到的问题及解决办法</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2024-09-01T03:32:28.000Z" title="Created 2024-09-01 11:32:28">2024-09-01</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2024-09-01T08:09:16.919Z" title="Updated 2024-09-01 16:09:16">2024-09-01</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="移植RTL8188FTV到T113 Tina4.0上的过程以及遇到的问题及解决办法"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><hr>
 <h1 id="零、概述"><a href="#零、概述" class="headerlink" title="零、概述"></a>零、概述</h1><p>2024年年中的时候画了一块T113的开发板，采用了核心板和可替换底板设计，为了学习WiFi相关内容，选了RTL8188FTV作为WiFi模块（网上最便宜的，不过大家适配比较少，所以坑很多），花了一段时间将这部分移植成功了，做出如下记录以供参考。</p>
 <hr>
 <h1 id="一、前期准备"><a href="#一、前期准备" class="headerlink" title="一、前期准备"></a>一、前期准备</h1><p>我们的目的是适配一款新的WiFi模块，所以一开始系统什么的需要先准备好，不在本文探讨的范畴。需要做出如下准备：</p>
@@ -166,7 +166,6 @@
 <hr>
 <h1 id="二、移植过程"><a href="#二、移植过程" class="headerlink" title="二、移植过程"></a>二、移植过程</h1><h2 id="1-内核中加入rtl8188ftv驱动"><a href="#1-内核中加入rtl8188ftv驱动" class="headerlink" title="1.内核中加入rtl8188ftv驱动"></a>1.内核中加入rtl8188ftv驱动</h2><h3 id="（1）-添加驱动到内核中"><a href="#（1）-添加驱动到内核中" class="headerlink" title="（1）.添加驱动到内核中"></a>（1）.添加驱动到内核中</h3><p>在Tina4.0中可以将wif模块的驱动放在<code>linux-5.4/drivers/staging</code>或者是<code>linux-5.4/drivers/net/wireless</code>，我选择放在staging中，尽量不要去修改原生的目录，包括Tina5.0就开始使用bsp目录，专门管理全志特性的东西，尽量不修改到Linux原生的目录，后续编译的时候通过链接的方式整合到一起。</p>
 <p>好了，话说回来，现在需要在staging中新建对应目录，并将驱动解压进去。</p>
-
 <p><img src="/.com//image-20240831210727715.png" alt="image-20240831210727715"></p>
 <p>解压后的rtl8188ftv目录如下：</p>
 <p><img src="/.com//image-20240831210808753.png" alt="image-20240831210808753"></p>
