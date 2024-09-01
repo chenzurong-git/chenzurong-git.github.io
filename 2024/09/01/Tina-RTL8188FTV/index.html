@@ -7,7 +7,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
 <meta property="article:published_time" content="2024-09-01T03:32:28.000Z">
-<meta property="article:modified_time" content="2024-09-01T03:35:56.939Z">
+<meta property="article:modified_time" content="2024-09-01T03:47:09.995Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="Version 1.0">
 <meta name="twitter:card" content="summary">
@@ -56,7 +56,7 @@
   isHome: false,
   isHighlightShrink: false,
   isToc: true,
-  postUpdate: '2024-09-01 11:35:56'
+  postUpdate: '2024-09-01 11:47:09'
 }</script><script>(win=>{
       win.saveToLocal = {
         set: (key, value, ttl) => {
@@ -153,7 +153,7 @@
         }
       }
       detectApple()
-    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">2</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><hr class="custom-hr"/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="Hexo"><span class="site-name">Hexo</span></a></span><div id="menus"><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">移植RTL8188FTV到T113 Tina4.0上的过程以及遇到的问题及解决办法</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2024-09-01T03:32:28.000Z" title="Created 2024-09-01 11:32:28">2024-09-01</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2024-09-01T03:35:56.939Z" title="Updated 2024-09-01 11:35:56">2024-09-01</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="移植RTL8188FTV到T113 Tina4.0上的过程以及遇到的问题及解决办法"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><hr>
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">2</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><hr class="custom-hr"/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="Hexo"><span class="site-name">Hexo</span></a></span><div id="menus"><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">移植RTL8188FTV到T113 Tina4.0上的过程以及遇到的问题及解决办法</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2024-09-01T03:32:28.000Z" title="Created 2024-09-01 11:32:28">2024-09-01</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2024-09-01T03:47:09.995Z" title="Updated 2024-09-01 11:47:09">2024-09-01</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="移植RTL8188FTV到T113 Tina4.0上的过程以及遇到的问题及解决办法"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><hr>
 <h1 id="零、概述"><a href="#零、概述" class="headerlink" title="零、概述"></a>零、概述</h1><p>2024年年中的时候画了一块T113的开发板，采用了核心板和可替换底板设计，为了学习WiFi相关内容，选了RTL8188FTV作为WiFi模块（网上最便宜的，不过大家适配比较少，所以坑很多），花了一段时间将这部分移植成功了，做出如下记录以供参考。</p>
 <hr>
 <h1 id="一、前期准备"><a href="#一、前期准备" class="headerlink" title="一、前期准备"></a>一、前期准备</h1><p>我们的目的是适配一款新的WiFi模块，所以一开始系统什么的需要先准备好，不在本文探讨的范畴。需要做出如下准备：</p>
@@ -166,44 +166,45 @@
 <hr>
 <h1 id="二、移植过程"><a href="#二、移植过程" class="headerlink" title="二、移植过程"></a>二、移植过程</h1><h2 id="1-内核中加入rtl8188ftv驱动"><a href="#1-内核中加入rtl8188ftv驱动" class="headerlink" title="1.内核中加入rtl8188ftv驱动"></a>1.内核中加入rtl8188ftv驱动</h2><h3 id="（1）-添加驱动到内核中"><a href="#（1）-添加驱动到内核中" class="headerlink" title="（1）.添加驱动到内核中"></a>（1）.添加驱动到内核中</h3><p>在Tina4.0中可以将wif模块的驱动放在<code>linux-5.4/drivers/staging</code>或者是<code>linux-5.4/drivers/net/wireless</code>，我选择放在staging中，尽量不要去修改原生的目录，包括Tina5.0就开始使用bsp目录，专门管理全志特性的东西，尽量不修改到Linux原生的目录，后续编译的时候通过链接的方式整合到一起。</p>
 <p>好了，话说回来，现在需要在staging中新建对应目录，并将驱动解压进去。</p>
-<p><img src="/./Tina-RTL8188FTV/image-20240831210727715.png" alt="image-20240831210727715"></p>
+
+<p><img src="/.com//image-20240831210727715.png" alt="image-20240831210727715"></p>
 <p>解压后的rtl8188ftv目录如下：</p>
-<p><img src="/Tina-RTL8188FTV/image-20240831210808753.png" alt="image-20240831210808753"></p>
+<p><img src="/.com//image-20240831210808753.png" alt="image-20240831210808753"></p>
 <p>然后接下来需要让Linux能够识别到，需要做两项修改，一个是Kconfig，另一个是Makefile，修改这两处目的如下：</p>
 <ul>
 <li>Kconfig：可以让make kernel_menuconfig的时候识别到。</li>
 <li>Makefile：可以让Linux编译到驱动代码。</li>
 </ul>
 <h3 id="（2）-修改Kconfig"><a href="#（2）-修改Kconfig" class="headerlink" title="（2）.修改Kconfig"></a>（2）.修改Kconfig</h3><p>可以查看一下rtl8188ftv中的Kconfig的内容，如下：</p>
-<p><img src="/Tina-RTL8188FTV/image-20240831211045460.png" alt="image-20240831211045460"></p>
+<p><img src="/.com//image-20240831211045460.png" alt="image-20240831211045460"></p>
 <p>然后需要到staging进行修改Kconfig，让其包括rtl8188ftv下的Kconfig，如下：</p>
-<p><img src="/Tina-RTL8188FTV/image-20240831211522633.png" alt="image-20240831211522633"></p>
+<p><img src="/.com//image-20240831211522633.png" alt="image-20240831211522633"></p>
 <p>这样就可以在Linux下的menuconfig中找到这个驱动文件的配置。</p>
 <h3 id="（3）-修改Makefile"><a href="#（3）-修改Makefile" class="headerlink" title="（3）.修改Makefile"></a>（3）.修改Makefile</h3><p>接下来修改staging的Makefile，使Linux可以找到rtl8188ftv下的Makefile，如下：</p>
-<p><img src="/Tina-RTL8188FTV/image-20240831211732996.png" alt="image-20240831211732996"></p>
+<p><img src="/.com//image-20240831211732996.png" alt="image-20240831211732996"></p>
 <p>还记得最开始看的rtl8188ftv下的Kconfig嘛，就是里面有一个对应开启的宏，在Makefile中添加上前缀CONFIG，就作为Makefile的参数，所以当Kconfig的配置被选中后，CONFIG_RTL8188FU就有对应的变化，就会识别到rtl8188ftv的路径。</p>
 <p>现在执行<code>m kernel_menuconfig</code>就可以找到对应的设置，如下：</p>
-<p><img src="/Tina-RTL8188FTV/image-20240831212241509.png" alt="image-20240831212241509"></p>
+<p><img src="/.com//image-20240831212241509.png" alt="image-20240831212241509"></p>
 <h2 id="2-修改驱动配置"><a href="#2-修改驱动配置" class="headerlink" title="2.修改驱动配置"></a>2.修改驱动配置</h2><p>现在需要对驱动，也就是rtl8188ftv的Makefile进行修改，主要修改这几项：</p>
 <ul>
 <li>修改WIFI IC，也就是型号，这边如下：</li>
 </ul>
-<p><img src="/Tina-RTL8188FTV/image-20240831212429893.png" alt="image-20240831212429893"></p>
+<p><img src="/.com//image-20240831212429893.png" alt="image-20240831212429893"></p>
 <ul>
 <li>修改Interface，因为是USB模块，所以选到USB即可，如下：</li>
 </ul>
-<p><img src="/Tina-RTL8188FTV/image-20240831212509794.png" alt="image-20240831212509794"></p>
+<p><img src="/.com//image-20240831212509794.png" alt="image-20240831212509794"></p>
 <ul>
 <li>修改Platform Related，我使用的是T133，所以选择ARM_SUNxI，如下：</li>
 </ul>
-<p><img src="/Tina-RTL8188FTV/image-20240831212628777.png" alt="image-20240831212628777"></p>
+<p><img src="/.com//image-20240831212628777.png" alt="image-20240831212628777"></p>
 <ul>
 <li>修改对应编译链和编译目录，如下：</li>
 </ul>
 <p>这是原来的：</p>
-<p><img src="/Tina-RTL8188FTV/image-20240831212749527.png" alt="image-20240831212749527"></p>
+<p><img src="/.com//image-20240831212749527.png" alt="image-20240831212749527"></p>
 <p>修改为：</p>
-<p><img src="/Tina-RTL8188FTV/image-20240831213016673.png" alt="image-20240831213016673"></p>
+<p><img src="/.com//image-20240831213016673.png" alt="image-20240831213016673"></p>
 <p>这里面的几个参数分别是：</p>
 <ul>
 <li>CROSS_COMPILE:就是Tina编译链位置</li>
@@ -211,40 +212,40 @@
 <li>KSRC:Linux源码的路径</li>
 </ul>
 <h2 id="3-解决编译错误问题"><a href="#3-解决编译错误问题" class="headerlink" title="3.解决编译错误问题"></a>3.解决编译错误问题</h2><p>上面配置后就可以开始尝试编译，可以看到正在正常编译：</p>
-<p><img src="/Tina-RTL8188FTV/image-20240831213606605.png" alt="image-20240831213606605"></p>
+<p><img src="/.com//image-20240831213606605.png" alt="image-20240831213606605"></p>
 <p>距离成功有进一步了！！but，马上出问题了：</p>
 <ol>
 <li>fatal error: mach&#x2F;sys_config.h: No such file or directory</li>
 </ol>
-<p><img src="/Tina-RTL8188FTV/image-20240831213705741.png" alt="image-20240831213705741"></p>
+<p><img src="/.com//image-20240831213705741.png" alt="image-20240831213705741"></p>
 <p>这个问题好解，参考网上可以看到只要修改成linux下的sys_config.h即可，但是然而内核中也没有对应文件，我查了一下这个头文件主要是提供一个用于读取配置的操作，再看看<code>drivers/staging/rtl8188ftv/platform/platform_ARM_SUNxI_usb.c</code>内容，会发现这个其实是和模块上下电有关的，不过我现在是常供电，所以完全没必要。</p>
 <p>其实即使解决了这个问题，还会报一些缺少sw_usb_enable_hcd、sw_usb_disable_hcd、script_parser_fetch等的问题。我这边直接给出我的解决办法–<strong>取消编译且在初始化源码中注释上下电操作！</strong></p>
 <ul>
 <li>取消编译</li>
 </ul>
-<p><img src="/Tina-RTL8188FTV/image-20240901111812710.png" alt="image-20240901111812710"></p>
+<p><img src="/.com//image-20240901111812710.png" alt="image-20240901111812710"></p>
 <ul>
 <li>注释相关代码</li>
 </ul>
-<p><img src="/Tina-RTL8188FTV/image-20240831235848458.png" alt="image-20240831235848458"></p>
-<p><img src="/Tina-RTL8188FTV/image-20240831235740438.png" alt="image-20240831235740438"></p>
+<p><img src="/.com//image-20240831235848458.png" alt="image-20240831235848458"></p>
+<p><img src="/.com//image-20240831235740438.png" alt="image-20240831235740438"></p>
 <p>随后即可编译通过！！</p>
-<p><img src="/Tina-RTL8188FTV/image-20240901000118595.png" alt="image-20240901000118595"></p>
+<p><img src="/.com//image-20240901000118595.png" alt="image-20240901000118595"></p>
 <p>但是仔细看看log或是拿到板子上去跑一下就会发现报一个错，就是log中提到的：</p>
-<p><img src="/Tina-RTL8188FTV/image-20240901000210098.png" alt="image-20240901000210098"></p>
+<p><img src="/.com//image-20240901000210098.png" alt="image-20240901000210098"></p>
 <p>这个是由于内核命名空间未导入的原因，如下修改：</p>
-<p><img src="/Tina-RTL8188FTV/image-20240901000706357.png" alt="image-20240901000706357"></p>
+<p><img src="/.com//image-20240901000706357.png" alt="image-20240901000706357"></p>
 <p>理论上到此就可以直接结束了，把ko文件拿到板子上insmod即可，但是这是在Tina呢，需要再修改一下openwert，让系统自动加到rootfs中。</p>
 <h2 id="4-修改openwrt"><a href="#4-修改openwrt" class="headerlink" title="4.修改openwrt"></a>4.修改openwrt</h2><p>修改一下对应的mk文件，在通过软件包的形式将驱动安装到rootfs中。首先修改wireless.mk文件将对应ko文件写一个软件包，路径是<code>/home/book/T113/tina/package/kernel/linux/modules/wireless.mk</code>，如下：</p>
-<p><img src="/Tina-RTL8188FTV/image-20240901001426733.png" alt="image-20240901001426733"></p>
+<p><img src="/.com//image-20240901001426733.png" alt="image-20240901001426733"></p>
 <p>然后再执行m menuconfig，找到rtl8188ftv相关选项，然后选上即可。</p>
-<p><img src="/Tina-RTL8188FTV/image-20240901001519206.png" alt="image-20240901001519206"></p>
+<p><img src="/.com//image-20240901001519206.png" alt="image-20240901001519206"></p>
 <p>这样就会自动加载rootfs中了。</p>
 <hr>
 <h1 id="三、驱动验证"><a href="#三、驱动验证" class="headerlink" title="三、驱动验证"></a>三、驱动验证</h1><p>烧写新编译的固件，然后在<code>/lib/modules/5.4.61</code>下可以看到对应驱动</p>
-<p><img src="/Tina-RTL8188FTV/image-20240901001956313.png" alt="image-20240901001956313"></p>
+<p><img src="/.com//image-20240901001956313.png" alt="image-20240901001956313"></p>
 <p>使用insmod命令就可以将驱动加载了，如下：</p>
-<p><img src="/Tina-RTL8188FTV/image-20240901002116708.png" alt="image-20240901002116708"></p>
+<p><img src="/.com//image-20240901002116708.png" alt="image-20240901002116708"></p>
 <p>此时，ifconfig -a大概率是可以看到wlan0的，随后的操作自由发挥吧。</p>
 <p>整个移植过程还算顺利，当然也有查看一些大佬写的文章，我只是学到了然后也分享出来，以后大家有遇到可以进行参考，同时也给自己做一个笔记。</p>
 <p>至此，分享结束，谢谢大家！！73 😎</p>
